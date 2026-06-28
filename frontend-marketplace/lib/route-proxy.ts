@@ -22,12 +22,21 @@ export async function proxyToBackend(request: NextRequest, path: string) {
       ? undefined
       : await request.text();
 
-  const response = await fetch(`${API_BASE_URL}${path}${request.nextUrl.search}`, {
-    method: request.method,
-    headers,
-    body,
-    cache: "no-store",
-  });
+  let response: Response;
+
+  try {
+    response = await fetch(`${API_BASE_URL}${path}${request.nextUrl.search}`, {
+      method: request.method,
+      headers,
+      body,
+      cache: "no-store",
+    });
+  } catch {
+    return NextResponse.json(
+      { message: "No se pudo conectar con el servidor. Verifica que el backend este encendido." },
+      { status: 503 },
+    );
+  }
 
   const responseBody = await response.text();
   const proxiedResponse = new NextResponse(responseBody, {
@@ -41,4 +50,3 @@ export async function proxyToBackend(request: NextRequest, path: string) {
 
   return proxiedResponse;
 }
-

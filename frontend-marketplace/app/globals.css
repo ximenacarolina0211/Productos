@@ -12,6 +12,8 @@
   --border: rgba(226, 207, 255, 0.16);
   --border-strong: rgba(226, 207, 255, 0.3);
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --font-space-grotesk: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-fraunces: Georgia, "Times New Roman", serif;
 }
 
 @theme inline {
