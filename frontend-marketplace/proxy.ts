@@ -16,13 +16,14 @@ function isAuthRoute(pathname: string) {
   return pathname === "/login" || pathname === "/register";
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const role = request.cookies.get(AUTH_ROLE_COOKIE)?.value as UserRole | undefined;
+  const role = request.cookies.get(AUTH_ROLE_COOKIE)?.value as
+    | UserRole
+    | undefined;
 
   if (!role && (isCatalogRoute(pathname) || pathname.startsWith("/admin"))) {
-    const loginUrl = new URL("/login", request.url);
-    return NextResponse.redirect(loginUrl);
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   if (role && isAuthRoute(pathname)) {
