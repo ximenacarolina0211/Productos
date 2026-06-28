@@ -2,99 +2,144 @@ const bcrypt = require("bcryptjs");
 const { Category, Product, Role, User } = require("../models");
 
 const defaultCategories = [
-  { nombre: "Laptops" },
-  { nombre: "Accesorios" },
-  { nombre: "Monitores" },
-  { nombre: "Audio" },
-  { nombre: "Wearables" },
+  { nombre: "Moda" },
+  { nombre: "Belleza" },
+  { nombre: "Oficina" },
+  { nombre: "Hogar" },
+  { nombre: "Tecnologia" },
 ];
 
 const seededProducts = [
   {
-    nombre: "Laptop Lenovo IdeaPad Slim 3",
-    precio: 2499.9,
-    descripcion:
-      "Laptop de 15.6 pulgadas con procesador Intel Core i5, 8 GB de RAM y SSD de 512 GB.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Laptops",
-  },
-  {
-    nombre: "Mouse Logitech Pebble 2",
-    precio: 89.9,
-    descripcion:
-      "Mouse inalambrico silencioso con conectividad Bluetooth y receptor USB.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Accesorios",
-  },
-  {
-    nombre: "Teclado Mecanico Redragon Kumara",
+    nombre: "Blazer Ejecutivo Violet",
     precio: 189.9,
     descripcion:
-      "Teclado compacto con switches blue y retroiluminacion LED.",
+      "Blazer moderno para reuniones, ventas y eventos de negocio.",
     imageUrl:
-      "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Accesorios",
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Moda",
   },
   {
-    nombre: "Monitor Samsung ViewFinity 24",
-    precio: 799.9,
+    nombre: "Bolso Tote Premium",
+    precio: 149.9,
     descripcion:
-      "Monitor Full HD de 24 pulgadas con panel IPS y bordes delgados.",
+      "Bolso amplio con acabado elegante para trabajo diario y compras.",
     imageUrl:
-      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Monitores",
+      "https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Moda",
   },
   {
-    nombre: "Audifonos Sony WH-CH520",
-    precio: 229.9,
+    nombre: "Set Skincare Glow",
+    precio: 129.9,
     descripcion:
-      "Audifonos Bluetooth con hasta 50 horas de bateria y carga rapida.",
+      "Rutina de cuidado facial para una imagen fresca y profesional.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Belleza",
+  },
+  {
+    nombre: "Perfume Aura Morada",
+    precio: 169,
+    descripcion:
+      "Fragancia intensa con notas florales para uso diario o eventos.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Belleza",
+  },
+  {
+    nombre: "Planner Comercial 2026",
+    precio: 39.9,
+    descripcion:
+      "Agenda para organizar pedidos, metas, clientes y reuniones.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Oficina",
+  },
+  {
+    nombre: "Silla Ergonomica Pro",
+    precio: 499.9,
+    descripcion:
+      "Silla comoda para jornadas largas de trabajo y atencion al cliente.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Oficina",
+  },
+  {
+    nombre: "Lampara Decorativa Luna",
+    precio: 89.9,
+    descripcion:
+      "Lampara de mesa con luz calida para espacios modernos.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Hogar",
+  },
+  {
+    nombre: "Difusor Aromatico Zen",
+    precio: 99.9,
+    descripcion:
+      "Difusor compacto para ambientar oficinas, salas y tiendas.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Hogar",
+  },
+  {
+    nombre: "Audifonos Bluetooth Pulse",
+    precio: 159.9,
+    descripcion:
+      "Audifonos inalambricos para llamadas, musica y trabajo movil.",
     imageUrl:
       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Audio",
+    categoryName: "Tecnologia",
   },
   {
-    nombre: "Camara Web Logitech C920s",
-    precio: 319.9,
+    nombre: "Smartwatch Fit Business",
+    precio: 219.9,
     descripcion:
-      "Camara web Full HD con doble microfono y tapa de privacidad.",
+      "Reloj inteligente para notificaciones, salud y productividad.",
     imageUrl:
-      "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Accesorios",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Tecnologia",
   },
   {
-    nombre: "Smartwatch Xiaomi Mi Band 8",
-    precio: 179.9,
+    nombre: "Kit Empaque Boutique",
+    precio: 59.9,
     descripcion:
-      "Pulsera inteligente con monitoreo de salud y modos deportivos.",
+      "Bolsas, etiquetas y papel seda para entregar productos con marca.",
     imageUrl:
-      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=1200&q=80",
-    categoryName: "Wearables",
+      "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Oficina",
+  },
+  {
+    nombre: "Set Velas Home Studio",
+    precio: 79.9,
+    descripcion:
+      "Velas decorativas para crear ambientes elegantes en casa o showroom.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=1200&q=80",
+    categoryName: "Hogar",
   },
 ];
 
 function inferCategoryName(productName) {
   const name = productName.toLowerCase();
 
-  if (name.includes("laptop")) {
-    return "Laptops";
+  if (name.includes("blazer") || name.includes("bolso")) {
+    return "Moda";
   }
 
-  if (name.includes("monitor")) {
-    return "Monitores";
+  if (name.includes("skincare") || name.includes("perfume")) {
+    return "Belleza";
   }
 
-  if (name.includes("audif")) {
-    return "Audio";
+  if (name.includes("planner") || name.includes("silla") || name.includes("empaque")) {
+    return "Oficina";
   }
 
-  if (name.includes("watch") || name.includes("band")) {
-    return "Wearables";
+  if (name.includes("lampara") || name.includes("difusor") || name.includes("velas")) {
+    return "Hogar";
   }
 
-  return "Accesorios";
+  return "Tecnologia";
 }
 
 function inferImageUrl(productName) {
@@ -229,4 +274,3 @@ async function bootstrapDatabase() {
 module.exports = {
   bootstrapDatabase,
 };
-

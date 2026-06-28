@@ -5,22 +5,22 @@ DELETE FROM Products;
 DELETE FROM Categories;
 
 INSERT INTO Categories (id, nombre) VALUES
-  (1, 'Laptops'),
-  (2, 'Accesorios'),
-  (3, 'Monitores'),
-  (4, 'Audio'),
-  (5, 'Wearables');
+  (1, 'Moda'),
+  (2, 'Belleza'),
+  (3, 'Oficina'),
+  (4, 'Hogar'),
+  (5, 'Tecnologia');
 
-INSERT INTO Products (nombre, precio, descripcion, imageUrl, categoryId) VALUES
-('Laptop Lenovo IdeaPad 3', 1599.90, 'Laptop basica para estudio y oficina', 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80', 1),
-('Mouse Logitech M280', 59.90, 'Mouse inalambrico ergonomico', 'https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=1200&q=80', 2),
-('Monitor Samsung 27"', 799.00, 'Monitor Full HD de 27 pulgadas', 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1200&q=80', 3),
-('Teclado Redragon Kumara K552', 189.50, 'Teclado mecanico con iluminacion LED', 'https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=1200&q=80', 2),
-('Audifonos Sony WH-CH510', 249.00, 'Audifonos inalambricos con buena autonomia', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80', 4),
-('Laptop ASUS Vivobook 15', 2199.00, 'Laptop con Ryzen 7, 16 GB de RAM y SSD de 512 GB', 'https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80', 1),
-('Base de enfriamiento Cooler Master', 119.90, 'Base con ventiladores duales y altura regulable para laptops', 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=80', 2),
-('Monitor LG UltraWide 29', 1199.00, 'Monitor IPS UltraWide ideal para productividad y multitarea', 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80', 3),
-('Parlante JBL Flip 6', 459.90, 'Parlante Bluetooth portatil con sonido potente y resistencia al agua', 'https://images.unsplash.com/photo-1585386959984-a41552231658?auto=format&fit=crop&w=1200&q=80', 4),
-('Smartwatch Amazfit Bip 5', 329.90, 'Reloj inteligente con GPS, llamadas Bluetooth y monitoreo de salud', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80', 5),
-('Hub USB-C Anker 7 en 1', 199.90, 'Hub multipuerto con HDMI, USB 3.0, lector SD y carga PD', 'https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=1200&q=80', 2),
-('Audifonos HyperX Cloud Stinger 2', 279.90, 'Headset gamer con sonido espacial y microfono con cancelacion de ruido', 'https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=1200&q=80', 4);
+INSERT INTO Products (id, nombre, precio, descripcion, imageUrl, categoryId) VALUES
+  (1, 'Blazer Ejecutivo Violet', 189.90, 'Blazer moderno para reuniones, ventas y eventos de negocio.', 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1200&q=80', 1),
+  (2, 'Bolso Tote Premium', 149.90, 'Bolso amplio con acabado elegante para trabajo diario y compras.', 'https://images.unsplash.com/photo-1591561954557-26941169b49e?auto=format&fit=crop&w=1200&q=80', 1),
+  (3, 'Set Skincare Glow', 129.90, 'Rutina de cuidado facial para una imagen fresca y profesional.', 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80', 2),
+  (4, 'Perfume Aura Morada', 169.00, 'Fragancia intensa con notas florales para uso diario o eventos.', 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80', 2),
+  (5, 'Planner Comercial 2026', 39.90, 'Agenda para organizar pedidos, metas, clientes y reuniones.', 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=1200&q=80', 3),
+  (6, 'Silla Ergonomica Pro', 499.90, 'Silla comoda para jornadas largas de trabajo y atencion al cliente.', 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=1200&q=80', 3),
+  (7, 'Lampara Decorativa Luna', 89.90, 'Lampara de mesa con luz calida para espacios modernos.', 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80', 4),
+  (8, 'Difusor Aromatico Zen', 99.90, 'Difusor compacto para ambientar oficinas, salas y tiendas.', 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80', 4),
+  (9, 'Audifonos Bluetooth Pulse', 159.90, 'Audifonos inalambricos para llamadas, musica y trabajo movil.', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80', 5),
+  (10, 'Smartwatch Fit Business', 219.90, 'Reloj inteligente para notificaciones, salud y productividad.', 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=1200&q=80', 5),
+  (11, 'Kit Empaque Boutique', 59.90, 'Bolsas, etiquetas y papel seda para entregar productos con marca.', 'https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1200&q=80', 3),
+  (12, 'Set Velas Home Studio', 79.90, 'Velas decorativas para crear ambientes elegantes en casa o showroom.', 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?auto=format&fit=crop&w=1200&q=80', 4);
