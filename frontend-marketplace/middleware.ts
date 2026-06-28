@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  AUTH_ROLE_COOKIE,
-  getDefaultRouteForRole,
-} from "@/lib/auth-constants";
-import { UserRole } from "@/types/auth";
+
+type UserRole = "ADMIN" | "CUSTOMER";
+
+const AUTH_ROLE_COOKIE = "marketplace_role";
+
+function getDefaultRouteForRole(role?: UserRole) {
+  return role === "ADMIN" ? "/admin" : "/";
+}
 
 function isCatalogRoute(pathname: string) {
   return pathname === "/" || pathname.startsWith("/products/");
